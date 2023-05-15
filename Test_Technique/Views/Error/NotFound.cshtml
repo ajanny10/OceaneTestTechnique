@@ -1,0 +1,24 @@
+﻿@model StatusResult;
+
+@{
+    Layout = "_LayoutTestTechnique";
+    ViewBag.Title = "Error";
+}
+
+
+<div class="mainError">
+
+    <h2 style="color: #721c24">Error</h2>
+    <p style="font-weight: 700;">@Model.Message</p>
+    <hr style="color: #721c24;" />
+    <p> <span style="font-weight: 700;">404 Erreur est survenue. Path =</span> <span> @Model.Path</span> </p>
+
+    @if(! string.IsNullOrEmpty(Model.Qs)){
+        <p> <span style="font-weight: 700;">Et QueryString =</span> <span> @Model.Qs</span> </p>
+    }
+
+    <div style="display: flex;justify-content: end;">
+        <a class="DarkBtn" asp-controller="Candidat" asp-action="AjoutCandidat">Cliquez ici pour accéder à la page d'accueil</a>
+    </div>
+
+</div>

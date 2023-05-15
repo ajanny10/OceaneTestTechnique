@@ -1,0 +1,545 @@
+﻿body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+}
+
+header {
+    background-color: #343a40 !important;
+    color: white;
+}
+
+.nav_Div {
+    height: 100px;
+    margin: 0px 50px;
+    display: flex;
+    align-items: center;
+}
+
+.container_Candidat {
+    width: 500px;
+    margin: 10px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.mainContent {
+    margin: 50px auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.group_input {
+    margin-bottom: 10px;
+}
+
+.input_Form {
+    display: block;
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/*input[type="submit"] {
+    display: block;
+    background-color: #4CAF50;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+    input[type="submit"]:hover {
+        background-color: #3e8e41;
+    }*/
+
+.combo-box {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+select, .inputSelect {
+    padding: 0.5em;
+    font-size: inherit;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.inputSelect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 95%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+    .inputSelect.show {
+        display: block;
+    }
+
+
+input[type=file]::file-selector-button {
+    padding: 10px;
+    box-shadow: inset 0px 1px 0px 0px #97c4fe;
+    background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color: #3d94f6;
+    border-radius: 6px;
+    border: 1px solid #337fed;
+    transition: 1s;
+    color: #ffffff;
+}
+
+    input[type=file]::file-selector-button:hover {
+        background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+        background-color: #1e62d0;
+    }
+
+.btn_Save {
+    border: 1px solid #18AB29;
+    width: 45%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #44C767;
+    color: #FFFFFF;
+}
+
+    .btn_Save:hover {
+        background-color: #5CBF2A;
+    }
+
+.Save_Div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.dropdown {
+    width: 100%;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: all .5s ease;
+    position: relative;
+    font-size: 14px;
+    color: #474747;
+    height: 100%;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+    .dropdown .select {
+        cursor: pointer;
+        display: block;
+        padding: 10px
+    }
+
+        .dropdown .select > i {
+            font-size: 13px;
+            color: #888;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+            float: right;
+            line-height: 20px
+        }
+
+    .dropdown:hover {
+        box-shadow: 0 0 4px rgb(204, 204, 204)
+    }
+
+    .dropdown:active {
+        background-color: #f8f8f8
+    }
+
+    .dropdown.active:hover,
+    .dropdown.active {
+        box-shadow: 0 0 4px rgb(204, 204, 204);
+        border-radius: 2px 2px 0 0;
+        background-color: #f8f8f8
+    }
+
+        .dropdown.active .select > i {
+            transform: rotate(-90deg)
+        }
+
+    .dropdown .dropdown-menu {
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        left: 0;
+        margin-top: 1px;
+        box-shadow: 0 1px 2px rgb(204, 204, 204);
+        border-radius: 0 1px 2px 2px;
+        overflow: hidden;
+        display: none;
+        max-height: 144px;
+        overflow-y: auto;
+        z-index: 9
+    }
+
+        .dropdown .dropdown-menu li {
+            padding: 10px;
+            transition: all .2s ease-in-out;
+            cursor: pointer
+        }
+
+    .dropdown .dropdown-menu {
+        padding: 0;
+        list-style: none
+    }
+
+        .dropdown .dropdown-menu li:hover {
+            background-color: #f2f2f2
+        }
+
+        .dropdown .dropdown-menu li:active {
+            background-color: #e2e2e2
+        }
+
+.CardConfirmation {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 520px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(21, 87, 36);
+    position: relative;
+    background-color: rgb(212, 237, 218);
+    margin: 5px auto;
+    padding: 10px;
+}
+
+.container_CancelButton {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancelButton {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.container_MessageConfirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MessageConfirmation {
+    font-size: 18px;
+    font-family: cursive;
+    font-weight: bold;
+    width: 100%;
+    margin: 0px;
+}
+
+.hide {
+    display: none !important;
+    transition: 1s;
+}
+
+#Table_Candidats {
+    width: 100%;
+}
+
+.TxtCenter {
+    text-align: center;
+}
+
+.Table_Container {
+    margin: 70px 70px;
+}
+
+tr th {
+    padding: 15px;
+    background: #343a40;
+    color: white;
+}
+
+tr td {
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #d6d8db;
+}
+
+.backgroundimage {
+    background-image: url("../Images/upload.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 28px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.centringdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.backgroundimageTrash {
+    background-image: url("../Images/trash.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 19px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.search_Container {
+    margin: 10px 0px;
+    float: right;
+}
+
+input[type=search] {
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.container_head {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.div_ForCheckbox {
+    display: flex
+}
+
+.labelCheckbox {
+    margin: 0 15px;
+}
+
+.checkbox {
+    margin: 0px 0px;
+}
+
+#logout {
+    padding: 5px;
+    width: 76px;
+    box-shadow: inset 0px 1px 0px 0px #97c4fe;
+    background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color: #3d94f6;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#login {
+    padding: 5px;
+    width: 76px;
+    box-shadow: inset 0px 1px 0px 0px #97c4fe;
+    background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color: #3d94f6;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#Candidat {
+    padding: 5px;
+    width: 76px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-right: 5px;
+    color: #17a2b8;
+    background-color: transparent;
+    background-image: none;
+    border-color: #17a2b8;
+}
+
+    #Candidat:hover {
+        color: #fff;
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+.Save_Div_Candidat {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    margin-top: 40px;
+}
+
+.btn_Save_Candidat {
+    border: 1px solid #18AB29;
+    width: 20%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #44C767;
+    color: #FFFFFF;
+}
+
+#ListCandidat {
+    padding: 5px;
+    width: fit-content;
+    box-shadow: inset 0px 1px 0px 0px #97c4fe;
+    background: linear-gradient(to bottom, #3dcbf6 5%, #2a4a7e 100%);
+    background-color: #3d94f6;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-right: 5px;
+}
+
+.ErrorMessage {
+    font-size: 13px;
+    color: red;
+}
+
+.iconCancel {
+    width: 11px;
+    height: 11px;
+}
+
+.mainError {
+    width: 700px;
+    margin: auto;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.DarkBtn {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-decoration: none;
+    border-radius: 0.25rem;
+}
+
+    .DarkBtn:hover {
+        background-color: black;
+        border-color: black;
+    }
+
+.menu-ul {
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+    display: inherit;
+}
+
+    .menu-ul li {
+        padding: 5px
+    }
+
+        .menu-ul li a {
+            color: rgba(255,255,255,.5);
+            text-decoration: none;
+            font-family: system-ui;
+            padding:5px;
+        }
+
+            .menu-ul li a:hover {
+                color: white;
+            }
+
+        .menu-ul li input {
+            color: rgba(255,255,255,.5);
+            text-decoration: none;
+            font-family: system-ui;
+            background-color: transparent;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+            .menu-ul li input:hover {
+                color: white;
+            }
+
+.container-Inscription {
+    width: 500px;
+    margin: 10px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.content-Button {
+    overflow: hidden;
+    min-height: 23px;
+    padding: 6px 2px 3px;
+    margin: 10px auto;
+    width: 85%;
+    font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
+}
+
+    .content-Button button {
+        background: #007bff !important;
+        height: 40px;
+        margin: 10px auto;
+        width: 98%;
+        color: #fff;
+        border: 0;
+        border-radius: 5px;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+
+.color-white {
+    color: white !important;
+    border-bottom: 1px solid;
+}

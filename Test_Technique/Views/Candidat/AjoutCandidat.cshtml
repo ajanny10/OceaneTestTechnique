@@ -1,0 +1,110 @@
+﻿@model AjoutCandidatModelWeb;
+
+@{
+    Layout = "_LayoutTestTechnique";
+    ViewBag.Title = "Ajouter Candidat";
+}
+
+
+<div id="Confirmation" class="CardConfirmation hide">
+    <div class="container_MessageConfirmation">
+        <p class="MessageConfirmation">Votre condidat a été bien envoyé</p>
+    </div>
+    <div class="container_CancelButton">
+        <button id="btnCancel_Confirmation" class="cancelButton"><img src="~/Images/xmark.png" class="iconCancel" /></button>
+    </div>
+</div>
+
+<div class="container_Candidat">
+
+    <form id="registerCandidat-form" enctype="multipart/form-data" asp-controller="Candidat" asp-action="AjoutCandidat" method="post">
+
+        <input hidden asp-for="Success" />
+
+        <div class="group_input">
+            <label asp-for="Nom"></label>
+            <input asp-for="Nom" type="text" class="input_Form" placeholder="Nom">
+            <span class="ErrorMessage" asp-validation-for="Nom"></span>
+        </div>
+
+        <div class="group_input">
+            <label asp-for="Prenom"></label>
+            <input asp-for="Prenom" class="input_Form" placeholder="Prénom">
+            <span class="ErrorMessage" asp-validation-for="Prenom"></span>
+        </div>
+
+        <div class="group_input">
+            <label asp-for="Mail"></label>
+            <input asp-for="Mail" class="input_Form" placeholder="Exemple@gmail.com">
+            <span class="ErrorMessage" asp-validation-for="Mail"></span>
+        </div>
+
+        <div class="group_input">
+            <label asp-for="Telephone"></label>
+            <input asp-for="Telephone" class="input_Form" placeholder="06/07 00000000 ">
+            <span class="ErrorMessage" asp-validation-for="Telephone"></span>
+        </div>
+
+        <div class="group_input">
+            <label asp-for="Niveau_Etude"></label>
+            <input asp-for="Niveau_Etude" class="input_Form" min="0" max="100">
+            <span class="ErrorMessage" asp-validation-for="Niveau_Etude"></span>
+        </div>
+
+        <div class="group_input">
+            <label asp-for="Nombre_Annees_Expérience"></label>
+            <input asp-for="Nombre_Annees_Expérience" class="input_Form" min="0" max="100">
+            <span class="ErrorMessage" asp-validation-for="Nombre_Annees_Expérience"></span>
+        </div>
+
+        <div class="group_input">
+            <label asp-for="Dernier_Employeur"></label>
+            <input asp-for="Dernier_Employeur" class="input_Form">
+            <span class="ErrorMessage" asp-validation-for="Dernier_Employeur"></span>
+        </div>
+
+        <div class="group_input">
+            <label asp-for="file"></label>
+            <input asp-for="file" class="input_Form" accept=".png, .jpg, .jpeg, .pdf">
+            <span class="ErrorMessage" asp-validation-for="file"></span>
+        </div>
+
+        <div class="Save_Div_Candidat">
+            <button class="btn_Save_Candidat" type="submit">Sauvgarder</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+
+@section AjoutCandidatJS {
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            var success = $("#Success").val();
+
+            if (success == "true") {
+
+                $("#Confirmation").removeClass('hide');
+            
+            }
+
+            $("#btnCancel_Confirmation").off('click').click(function () {
+
+                $("#Confirmation").addClass('hide');
+
+            });
+
+            $("#Accueil").addClass("color-white");
+
+        });
+
+
+    </script>
+
+}

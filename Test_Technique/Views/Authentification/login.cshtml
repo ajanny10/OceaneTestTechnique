@@ -1,0 +1,60 @@
+﻿@model LoginAccountModelWeb
+
+@{
+    Layout = "_LayoutTestTechnique";
+    ViewBag.Title = "Connexion";
+}
+
+
+<div class="container-Inscription">
+
+    <div class="container_head">
+        <h1>Connexion</h1>
+    </div>
+
+    <form method="post">
+
+        <div class="group_input">
+            <label asp-for="Email"></label>
+            <input class="input_Form" asp-for="Email">
+            <span class="ErrorMessage" asp-validation-for="Email"></span>
+
+        </div>
+
+        <div class="group_input">
+            <label asp-for="Password"></label>
+            <input class="input_Form" asp-for="Password">
+            <span class="ErrorMessage" asp-validation-for="Password"></span>
+        </div>
+
+        <div class="group_input">
+         <label asp-for="RememberMe">
+                        <input asp-for="RememberMe" />
+            @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+        </div>
+
+        <div class="content-Button">
+            <button type="submit">Valider</button>
+        </div>
+
+        <div style="font-size: 13px;color: red;" asp-validation-summary="All"></div>
+
+    </form>
+
+</div>
+
+
+@section ConnexionJS {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#connexion").addClass("color-white");
+
+        });
+
+    </script>
+
+}

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+@inject SignInManager<IdentityUser> _signInManager;
+@inject UserManager<IdentityUser> _userManager
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/TtIndex.css" asp-append-version="true">
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    @*<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>*@
+    @*<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>*@
+    @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
+    @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
+    <script src="~/js/ttindex.js"></script>
+</head>
+@{
+    var isUserLoggedIn = _signInManager.IsSignedIn(User);
+}
+<body>
+
+    <header>
+        <nav style="display:flex;justify-content:space-between">
+            <div class="nav_Div">
+                <h1>TEST TECHNIQUE</h1>
+            </div>
+            <div class="nav_Div">
+                @{
+                    if (_signInManager.IsSignedIn(User))
+                    {
+
+                        <div>
+                            <div style="padding: 3px 5px;text-align:center">
+                                <span style="border-bottom: 1px solid;">@User.Identity.Name</span>
+                            </div>
+                            <div>
+                                <ul class="menu-ul" style="display: flex !important">
+                                    <li>
+                                        <a id="Accueil" asp-controller="Candidat" asp-action="AjoutCandidat">Accueil</a>
+                                    </li>
+                                    <li>
+                                        <a id="LsCandidat" asp-controller="Candidat" asp-action="DisplayCandidats">Liste des candidat</a>
+                                    </li>
+                                    <li>
+                                        <form method="post" asp-controller="Authentification" asp-action="Deconnecter">
+                                            <input id="Deconnect" type="submit" value="Déconnecter">
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {
+
+                        <ul class="menu-ul">
+                            <li>
+                                <a id="Accueil" asp-controller="Candidat" asp-action="AjoutCandidat">Accueil</a>
+                            </li>
+                            <li>
+                                <a id="connexion" asp-controller="Authentification" asp-action="login">Connexion</a>
+                            </li>
+                            <li>
+                                <a id="inscription" asp-controller="Authentification" asp-action="Register">Inscription</a>
+                            </li>
+                        </ul>
+
+                    }
+                }
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="mainContent">
+            @RenderBody()
+        </div>
+
+    </main>
+
+
+    @if (IsSectionDefined("AjoutCandidatJS"))
+    {
+        @RenderSection("AjoutCandidatJS",true)
+    } 
+
+    @if (IsSectionDefined("InscriptionJS"))
+    {
+        @RenderSection("InscriptionJS",true)
+    }
+
+    @if (IsSectionDefined("ConnexionJS"))
+    {
+        @RenderSection("ConnexionJS",true)
+    }
+
+
+
+</body>
+</html>

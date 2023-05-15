@@ -1,0 +1,151 @@
+﻿@{
+    Layout = "_LayoutTestTechnique";
+    ViewBag.Title = "Listes des candidats";
+}
+
+
+<div class="Table_Container">
+
+    <div class="search_Container">
+
+        <input id="txt_searsh" type="search" placeholder="Recherche .." onkeyup="search()" />
+
+    </div>
+
+    <table id="Table_Candidats">
+
+        <thead>
+
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Mail</th>
+                <th>Téléphone</th>
+                <th>Niveau d’étude</th>
+                <th>Nombre d’années d’expérience</th>
+                <th>Dernier employeur</th>
+                <th>File</th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="Table_CandidatsBody" class="TxtCenter">
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        DownloadData();
+
+        $("#LsCandidat").addClass("color-white");
+
+    });
+
+    function DownloadData() {
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action(nameof(CandidatController.GetCandidatAsJson), "Candidat")',
+            contentType: "application/json; charset=utf-8",
+            cache: false,
+            traditional: true,
+            dataType: "json",
+            processData: true,
+
+            success: function (data) {
+
+                if (data.success == true) {
+
+                    for (var i = 0; i < data.data.length; i++) {
+                        var path = data.data[i].path;
+                        var row = $('<tr><td>' + data.data[i].nom
+                            + '</td><td>' + data.data[i].prenom
+                            + '</td><td>' + data.data[i].email
+                            + '</td><td>' + data.data[i].tel
+                            + '</td><td>' + data.data[i].niveuEtude
+                            + '</td><td>' + data.data[i].anneeExpert
+                            + '</td><td>' + data.data[i].dernierEmpl
+                            + '</td><td><div class="centringdiv"><a class="backgroundimage" onclick="GetFile(\'' + path + '\')" ></a><div><td><div class="centringdiv"><a class="backgroundimageTrash" onclick="DeleteCandidat(' + data.data[i].id + ')" ></a><div></td></tr>');
+                        $('#Table_CandidatsBody').append(row);
+
+                    }
+
+                }
+                else {
+                    alert(data.Message);
+                }
+
+            }
+        });
+
+    }
+
+    function GetFile(path) {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action(nameof(CandidatController.GetPath), "Candidat")?path=' + path,
+            dataType: "json",
+            success: function (data) {
+                if (data.success == true) {
+
+                    window.open("/Candidat/ShowFile?path=" + data.path + "&contentType=" + data.contentType, "_blank");
+                }
+            },
+        });
+
+    }
+
+    function DeleteCandidat(id) {
+
+        if (confirm('Etes-vous sur de vouloir supprimer cette candidat ?')) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action(nameof(CandidatController.DeleteCandidat), "Candidat")?candidatid=' + id,
+                dataType: "json",
+                success: function (data) {
+
+                    if (data.success == true) {
+
+                        $("#Table_CandidatsBody").empty();
+                        DownloadData();
+
+                    }
+
+                }
+            });
+        }
+    }
+
+
+    function search() {
+
+        var Text_Search = document.getElementById("txt_searsh").value;
+        $.ajax({
+            url: '@Url.Action(nameof(CandidatController.GetCandidatAsJsonKOESearch), "Candidat")?Search=' + Text_Search,
+            type: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                if (data.success == true) {
+
+                    $("#Table_CandidatsBody").empty();
+                    for (var i = 0; i < data.data.length; i++) {
+
+                        var row = $('<tr><td>' + data.data[i].nom + '</td><td>' + data.data[i].prenom + '</td><td>' + data.data[i].email + '</td><td>' + data.data[i].tel + '</td><td>' + data.data[i].niveuEtude + '</td><td>' + data.data[i].anneeExpert + '</td><td>' + data.data[i].dernierEmpl + '</td><td><div class="centringdiv"><a class="backgroundimage" onclick="GetFile(' + data.data[i].id + ')" ></a><div><td><div class="centringdiv"><a class="backgroundimageTrash" onclick="DeleteCandidat(' + data.data[i].id + ')" ></a><div></td></tr>');
+                        $('#Table_CandidatsBody').append(row);
+
+                    }
+
+                }
+            }
+        });
+
+    }
+</script>

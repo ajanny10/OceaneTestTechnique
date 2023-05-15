@@ -1,0 +1,57 @@
+﻿@model RegisterAccountModelWeb
+
+@{
+    Layout = "_LayoutTestTechnique";
+    ViewBag.Title = "Inscription";
+}
+
+
+<div class="container-Inscription">
+
+    <div class="container_head">
+        <h1>Créer un compte</h1>
+    </div>
+
+    <form id="Authentification-form" enctype="multipart/form-data" asp-controller="Authentification" asp-action="Register" method="post">
+
+        <div class="group_input">
+            <label asp-for="Email"></label>
+            <input class="input_Form" asp-for="Email">
+        </div>
+
+        <div class="group_input">
+            <label asp-for="Password"></label>
+            <input class="input_Form" asp-for="Password">
+        </div>
+
+        <div class="group_input">
+            <label asp-for="ConfirmPassword"></label>
+            <input class="input_Form" asp-for="ConfirmPassword">
+        </div>
+
+        <div class="content-Button">
+            <button type="submit">Je m'inscris</button>
+        </div>
+
+        <div style="font-size: 13px;color: red;" asp-validation-summary="All"></div>
+
+    </form>
+
+</div>
+
+
+@section InscriptionJS {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#inscription").addClass("color-white");
+
+        });
+
+    </script>
+
+}
+
+
